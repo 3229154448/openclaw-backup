@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "1b6ce395-1ca3-4416-a84d-e9c985c97d2f",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日文章撰写",
+      "enabled": true,
+      "createdAtMs": 1777949533197,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请为像素风博客撰写一篇新文章并部署到 GitHub Pages。\n\n要求：\n1. 主题从以下方向随机选择：像素艺术/复古游戏/芯片音乐/8位文化/独立游戏/游戏设计/前端技术/Astro/TypeScript\n2. 文章内容要充实（至少800字），包含代码块、表格、引用等丰富格式\n3. frontmatter 格式参考现有文章：title/description/date/tags/categories/cover/toc\n4. cover 使用已有图片：/assets/images/banner/pixel-blog.webp 或 /assets/images/banner/retro-game.webp 或 /assets/images/banner/8bit-music.webp\n5. 保存到 /root/.openclaw/workspace-main/pixel-astro-blog/src/content/blog/ 目录，文件名用英文slug\n6. 构建项目：cd /root/.openclaw/workspace-main/pixel-astro-blog && pnpm build\n7. 推送部署：cd /root/.openclaw/workspace-main/pixel-astro-blog && git add . && git commit -m '📝 新文章: [文章标题]' && git push https://3229154448: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@github.com/3229154448/pixel-astro-blog.git main\n8. 等待部署完成后报告结果\n\n注意：先确认 pnpm 可用（corepack enable && corepack prepare pnpm@latest --activate），如不可用先安装。构建和推送分开执行，不要链式命令。",
+        "model": "nvidia/z-ai/glm5",
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "05df5ed4-d7ac-4f8e-a489-52d6f74c7218",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-运势",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成水瓶座每日运势推送，严格按以下格式输出：\n\n✨♒ 水瓶座每日运势 ✨\n📅 [当天日期] [周几]\n━━━━━━━━━━━━━━━\n🌟 综合运势：★★★☆☆ [运势描述]\n💕 爱情运势：★★★☆☆ [运势描述]\n💼 事业运势：★★★☆☆ [运势描述]\n🍀 幸运数字：[数字]\n🎨 幸运颜色：[颜色]\n🧭 幸运方位：[方位]\n━━━━━━━━━━━━━━━\n⚡ AI助手 · 每日运势\n\n直接输出，不要额外解释。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "0cf57c77-9861-4722-b859-6aa625f81c5a",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-天气",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成梅州市天气推送。必须使用 web_search 搜索\"梅州市 天气\"获取实时数据，然后严格按以下格式输出：\n\n🌤️ 梅州市实时天气 🌤️\n📅 [当天日期] [时间]（北京时间）\n━━━━━━━━━━━━━━━\n🌡️ 温度：[X]°C\n🤗 体感温度：[X]°C\n☁️ 天气：[天气状况]\n💧 湿度：[X]%\n🌬️ 风速：[X]km/h [风向]\n👁️ 能见度：[X]km\n📊 气压：[X]hPa\n☀️ 紫外线指数：[X]（[等级]）\n━━━━━━━━━━━━━━━\n📋 未来3天预报：\n📅 [日期]（[今天/明天/后天]）[天气图标] [天气] [最低温]°C ~ [最高温]°C\n━━━━━━━━━━━━━━━\n⚡ 温馨提示：[贴心提醒]\n⚡ AI助手 · 梅州天气\n\n直接输出，不要额外解释。必须通过搜索获取真实数据，不要编造。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "13352d2a-0d9f-4019-b0aa-31df93e9615e",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-国际新闻",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成国际新闻精选推送。必须使用 web_search 搜索获取最新国际新闻（BBC和纽约时报），然后严格按以下格式输出：\n\n🌍 国际新闻精选 🌍\n📅 [当天日期]\n━━━━━━━━━━━━━━━\n📡 BBC精选：\n1️⃣ [标题] [简短描述]\n2️⃣ [标题] [简短描述]\n...共5条\n━━━━━━━━━━━━━━━\n📡 纽约时报精选：\n6️⃣ [标题] [简短描述]\n...共5条\n━━━━━━━━━━━━━━━\n⚡ AI助手 · 国际视野\n\n直接输出，不要额外解释。必须通过搜索获取真实数据，不要编造。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "677c8c4d-ba31-471b-9ded-7a2eb36015eb",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-国内要闻",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成国内要闻推送。必须使用 web_search 搜索获取今日中国重要新闻，然后严格按以下格式输出：\n\n🇨🇳 今日要闻 🇨🇳\n📅 [当天日期]\n━━━━━━━━━━━━━━━\n1️⃣ 【[标签]】[标题] [简短描述]\n2️⃣ 【[标签]】[标题] [简短描述]\n...共10条\n━━━━━━━━━━━━━━━\n⚡ AI助手 · 国事关心\n\n直接输出，不要额外解释。必须通过搜索获取真实数据，不要编造。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "a8ed4b27-3006-4414-8060-edf1ed015fcf",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-科技动态",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成科技动态推送。必须使用 web_search 搜索获取最新科技新闻，然后严格按以下格式输出：\n\n🔬 科技动态 🔬\n📅 [当天日期]\n━━━━━━━━━━━━━━━\n🤖 AI领域：\n1️⃣ [标题] [简短描述]\n...\n━━━━━━━━━━━━━━━\n⚡ 半导体 & 芯片：\n[标题] [简短描述]\n...\n━━━━━━━━━━━━━━━\n🔋 新能源：\n[标题] [简短描述]\n...\n━━━━━━━━━━━━━━━\n🚗 智能驾驶：\n[标题] [简短描述]\n...\n━━━━━━━━━━━━━━━\n⚡ AI助手 · 科技前沿\n\n直接输出，不要额外解释。必须通过搜索获取真实数据，不要编造。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "7adb9e8b-0d62-4604-91ee-08ea5c35e657",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-Steam折扣",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成Steam游戏折扣推送。必须使用 web_search 搜索\"Steam 今日折扣 史低 2026\"获取实时折扣数据，也可以用 web_fetch 访问 https://store.steampowered.com/specials 获取数据。然后严格按以下格式输出：\n\n🎮 Steam游戏折扣 🎮\n📅 [当天日期]\n━━━━━━━━━━━━━━━\n1️⃣ [游戏名] - 原价¥[X]，折后¥[X]，折扣力度🔥🔥🔥🔥🔥【史低】\n2️⃣ [游戏名] - 原价¥[X]，折后¥[X]，折扣力度🔥🔥🔥🔥\n...5-10款\n━━━━━━━━━━━━━━━\n⚡ AI助手 · Steam折扣\n\n注意：\n- 如果是史低价格，必须标注🔥【史低】\n- 折扣力度用🔥表示，5个🔥为最大折扣\n- 必须通过搜索获取真实数据，不要编造\n- 如果无法获取实时数据，说明原因并推荐几个近期热门折扣\n\n直接输出，不要额外解释。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "5b810f58-ed6e-4a30-a0bd-8de109694cff",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-Epic免费",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成Epic免费游戏推送。必须使用 web_search 搜索\"Epic Games free games this week\"获取当前免费游戏数据，也可以用 web_fetch 访问 https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions 获取数据。然后严格按以下格式输出：\n\n🆓 Epic免费游戏 🆓\n📅 [当天日期]\n━━━━━━━━━━━━━━━\n**当前免费领取游戏：**\n1️⃣ [游戏名] - 原价：¥[X] - 类型：[游戏类型] - 介绍：[2-3句话说明游戏类型和玩法特色]\n2️⃣ [游戏名] - 原价：¥[X] - 类型：[游戏类型] - 介绍：[2-3句话说明游戏类型和玩法特色]\n━━━━━━━━━━━━━━━\n⚡ AI助手 · Epic免费游戏\n\n注意：\n- 必须通过搜索或抓取获取真实数据，不要编造\n- 介绍要简明有趣，突出游戏特色\n\n直接输出，不要额外解释。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "7903fb0d-e951-4493-9d11-8f73c9868eab",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "每日早报-金句",
+      "enabled": true,
+      "createdAtMs": 1777965990569,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的AI助手。现在是北京时间早上7点，请生成每日金句推送。选一句有意义的名言，结合当天可能关注的新闻话题写一段解读，严格按以下格式输出：\n\n📜 每日金句 📜\n📅 [当天日期]\n━━━━━━━━━━━━━━━\n「[名言内容]」\n—— [作者]《[出处]》\n━━━━━━━━━━━━━━━\n💡 今日解读：\n[结合当下时事或生活感悟的解读，2-5句话]\n━━━━━━━━━━━━━━━\n⚡ AI助手 · 金句相伴\n\n直接输出，不要额外解释。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "memory-sync-github",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "记忆同步GitHub",
+      "enabled": true,
+      "createdAtMs": 1777969489973,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */6 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行记忆同步到 GitHub。直接运行同步脚本：\n\nbash /root/.openclaw/workspace-main/memory-repo/sync.sh\n\n如果脚本报错，手动执行以下步骤：\n1. cp /root/.openclaw/workspace-main/MEMORY.md /root/.openclaw/workspace-main/memory-repo/MEMORY.md\n2. cp /root/.openclaw/workspace-main/memory/full-history.md /root/.openclaw/workspace-main/memory-repo/full-history.md\n3. cp /root/.openclaw/workspace-main/SOUL.md /root/.openclaw/workspace-main/memory-repo/SOUL.md\n4. cp /root/.openclaw/workspace-main/IDENTITY.md /root/.openclaw/workspace-main/memory-repo/IDENTITY.md\n5. cp /root/.openclaw/workspace-main/USER.md /root/.openclaw/workspace-main/memory-repo/USER.md\n6. cp /root/.openclaw/workspace-main/AGENTS.md /root/.openclaw/workspace-main/memory-repo/AGENTS.md\n7. cp /root/.openclaw/workspace-main/skills/self-improve/data/hot.md /root/.openclaw/workspace-main/memory-repo/self-improve-hot.md\n8. cp /root/.openclaw/workspace-main/skills/self-improve/data/changelog.md /root/.openclaw/workspace-main/memory-repo/self-improve-changelog.md\n9. cd /root/.openclaw/workspace-main/memory-repo && git add -A && git diff --cached --quiet || (git commit -m '🧠 记忆同步' && git push origin main)\n\n完成后回复 NO_REPLY",
+        "model": "nvidia/z-ai/glm5",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {}
+    },
+    {
+      "id": "gaokao-countdown",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "高考倒计时",
+      "enabled": true,
+      "createdAtMs": 1777969645315,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你是南天的魔鬼督学AI。现在是北京时间早上7点，请生成一条高考倒计时推送，针对2027年高考（2027年6月7日）。要求：\n\n1. 计算距离2027年6月7日的天数\n2. 风格：打压式教育，要狠、要毒舌、要扎心，让人看了就焦虑到立刻去学习\n3. 格式：\n\n🚨 高考倒计时 🚨\n━━━━━━━━━━━━━━━\n📅 距离2027高考还有 [X] 天\n━━━━━━━━━━━━━━━\n💀 [一句毒舌打压的话，让人焦虑]\n📚 [一句关于学习时间的残酷事实]\n🔥 [一句激励/刺激的话]\n━━━━━━━━━━━━━━━\n⚡ 督学AI · 还不滚去学习？\n\n注意：\n- 每天的内容必须不一样，要有创意地换着花样骂\n- 可以引用真实的高考数据（录取率、考生人数等）增加压迫感\n- 语气要像严厉的班主任+毒舌导师，不是温柔鼓励\n- 直接输出，不要额外解释\n- 用 message 工具发送到 qqbot，target 为 qqbot:c2c:083093B7151A3F93C9D91136183DCF75"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    },
+    {
+      "id": "self-improve-cron",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "自我改进循环",
+      "enabled": true,
+      "createdAtMs": 1777970237207,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 */3 * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请执行 Self-Improve 自我改进循环。\n\n1. 扫描 /root/.openclaw/agents/main/sessions/ 中最近的会话日志，提取以下学习信号：\n - 命令执行失败/错误\n - 用户纠正（如'不对'、'不是这样'、'重来'等）\n - 工具调用失败\n - 重复犯的错误模式\n\n2. 将提取的经验分类存储：\n - HOT规则（频繁使用）→ /root/.openclaw/workspace-main/skills/self-improve/data/hot.md\n - WARM规则（按主题）→ /root/.openclaw/workspace-main/skills/self-improve/data/themes/[主题].md\n - COLD归档 → /root/.openclaw/workspace-main/skills/self-improve/data/archive/\n\n3. 将改进建议写入 /root/.openclaw/workspace-main/skills/self-improve/data/suggestions.md，格式：\n ## [日期时间 UTC]\n - **目标文件**: 建议修改的文件路径\n - **建议操作**: 新增/修改/删除\n - **建议内容**: 具体建议\n - **原因**: 为什么建议\n - **来源**: 会话ID或触发来源\n\n4. 不要直接修改 AGENTS.md、SOUL.md、IDENTITY.md、USER.md 等系统文件，只记录建议\n\n5. 完成后，同步记忆到GitHub：执行 /root/.openclaw/workspace-main/memory-repo/sync.sh",
+        "timeoutSeconds": 600
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "qqbot",
+        "to": "qqbot:c2c:083093B7151A3F93C9D91136183DCF75",
+        "accountId": "default"
+      },
+      "state": {}
+    }
+  ]
+}
