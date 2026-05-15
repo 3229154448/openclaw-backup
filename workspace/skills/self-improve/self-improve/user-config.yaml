@@ -1,0 +1,26 @@
+# Self-Improve User Configuration
+# =================================
+
+# ─── Storage Locations ───
+storage:
+  root: "/root/.openclaw/workspace-main/skills/self-improve"
+  knowledge_root: "/root/.openclaw/workspace-main/skills/self-improve/learned"
+  workspace_root: "/root/.openclaw"
+
+# ─── Owner Information ───
+owner:
+  name: "南天"
+  timezone: "Asia/Shanghai"
+  notification:
+    channel: "qqbot"
+    to: "qqbot:c2c:083093B7151A3F93C9D91136183DCF75"
+
+# ─── Agent Configuration ───
+agent:
+  main_agent: "main"
+  cron_model: "zhipu/glm-4.7-flash"
+
+# ─── Schedule ───
+schedule:
+  cron: "0 4 */3 * *"
+  timezone: "Asia/Shanghai"
